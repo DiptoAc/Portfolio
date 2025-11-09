@@ -1,101 +1,264 @@
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+
+interface Project {
+  title: string;
+  description: string;
+  fullDescription?: string;
+  tech: string[];
+  github: string | null;
+  live: string | null;
+  highlights?: string[];
+}
+
 export default function Projects() {
-  const projects = [
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const projects: Project[] = [
     {
-      title: "FinBot – AI-Powered Finance Management",
-      description: "Multilingual (Bengali + English) full-stack AI platform for managing structured data through chat and voice commands. Integrated MCP for direct LLM-database communication and real-time voice chat via WebRTC.",
-      tech: ["Next.js", "Django REST", "Claude AI", "WebRTC", "MCP"],
-      github: "https://github.com/MehediHasan-75/FinanaceManagement",
-      live: null
+      title: "EcoNest – Employee Management Service",
+      description: "Developed an RBAC office management system with 6 different roles. Cross-platform access on phones, tablets, and computers for modern hybrid workplace.",
+      fullDescription: "A comprehensive employee management system with Role-Based Access Control (RBAC) featuring 6 distinct user roles. The system provides seamless cross-platform access across phones, tablets, and computers, making it ideal for modern hybrid workplaces. Features include hybrid manual/AI operations and dynamic, shareable table architecture with secure user permissions.",
+      tech: ["React Native", "PostgreSQL", "Supabase", "Expo", "JavaScript"],
+      github: "https://github.com/Brikkhobondhon/EcoNest",
+      live: null,
+      highlights: [
+        "6 different role-based access levels",
+        "Cross-platform compatibility (mobile, tablet, desktop)",
+        "Hybrid manual/AI operations",
+        "Secure user permission system",
+        "Real-time data synchronization"
+      ]
     },
     {
-      title: "GameVerse: Video Game Discovery Platform",
-      description: "Responsive game discovery application with dynamic filtering, search, and sorting. Integrated RAWG API for 10,000+ games with platform filtering, genre categories, and dark mode support.",
-      tech: ["React", "TypeScript", "Chakra UI", "RAWG API"],
-      github: "https://github.com/MD-Al-Fahad/GameVerse",
-      live: "https://gameverse-hub.vercel.app/"
+      title: "AttManager App: Attendance Management System",
+      description: "Implemented robust core application logic and attendance management using Kotlin. Designed responsive, native UI/UX layouts for Android devices.",
+      fullDescription: "A native Android application built with Kotlin that streamlines attendance management. Features robust core application logic, responsive UI/UX design using XML, and local data persistence for offline functionality and stability.",
+      tech: ["Kotlin", "Android Studio", "XML"],
+      github: "https://github.com/DiptoAc/Android_App_Kt",
+      live: null,
+      highlights: [
+        "Native Android development with Kotlin",
+        "Responsive UI/UX with XML layouts",
+        "Local data persistence",
+        "Offline functionality",
+        "Material Design implementation"
+      ]
+    },
+    {
+      title: "Professional Employee Directory",
+      description: "Complete management system featuring CRUD operations and robust data persistence using local SQLite. Professional UI/UX with form validation and confirmation dialogs.",
+      fullDescription: "A cross-platform mobile application built with React Native and Expo, featuring complete CRUD operations and robust local data persistence using SQLite. The app includes professional UI/UX design, comprehensive form validation, and confirmation dialogs to ensure data safety and integrity.",
+      tech: ["React Native", "TypeScript", "Expo", "SQLite"],
+      github: "https://github.com/DiptoAc/Mock_App",
+      live: null,
+      highlights: [
+        "Full CRUD operations",
+        "SQLite local database",
+        "Form validation",
+        "Confirmation dialogs for data safety",
+        "Cross-platform (iOS & Android)"
+      ]
     },
     {
       title: "Traffic Violation Detection System",
-      description: "Automated traffic violation detection using Arduino UNO, ESP32-CAM, and ultrasonic sensors. Real-time image capture to Telegram bot with 95%+ accuracy for law enforcement support.",
+      description: "Automated traffic violation detection using Arduino UNO, ESP32-CAM, and ultrasonic sensors. Real-time image capture to Telegram bot with 95%+ accuracy.",
+      fullDescription: "An IoT-based smart monitoring system for automated traffic violation detection. Uses Arduino UNO, ESP32-CAM, and ultrasonic sensors (HC-SR04) to detect violations in real-time. Features intelligent traffic light control with automated interval management, Wi-Fi connectivity for cloud communication, and instant image transmission to Telegram bot with 95%+ reliability.",
       tech: ["Arduino", "ESP32-CAM", "C++", "IoT", "Telegram API"],
       github: "https://github.com/rayhanulamint2/Traffic-Violation-Detection-System",
-      live: null
-    },
-    {
-      title: "BMI Calculator",
-      description: "Interactive BMI calculator with real-time metric conversion and health category classification. Implemented form validation and responsive UI design.",
-      tech: ["HTML", "CSS", "JavaScript"],
-      github: "https://github.com/MD-Al-Fahad/Webb/tree/master/JS/Projects/BMIcalculator",
-      live: "https://bmi-calculator-one-dusky.vercel.app/"
-    },
-    {
-      title: "Number Guessing Game",
-      description: "Interactive browser game with real-time feedback, attempt tracking, input validation, and win/loss conditions. Features guess history and restart functionality.",
-      tech: ["HTML", "CSS", "JavaScript"],
-      github: "https://github.com/MD-Al-Fahad/Webb/tree/master/JS/Projects/guessTheNumber",
-      live: "https://guess-the-number-azure-chi.vercel.app/"
+      live: null,
+      highlights: [
+        "95%+ detection accuracy",
+        "Real-time image capture",
+        "Automated traffic light control",
+        "Wi-Fi cloud communication",
+        "Instant Telegram notifications"
+      ]
     }
   ];
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          Featured Projects
-        </h2>
+    <>
+      <section id="projects" className="py-20 bg-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-20 right-0 w-96 h-96 bg-blue-50 rounded-full filter blur-3xl opacity-50" />
+        <div className="absolute bottom-20 left-0 w-96 h-96 bg-purple-50 rounded-full filter blur-3xl opacity-50" />
         
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
-            >
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
-                {project.title}
-              </h3>
-              
-              <p className="text-gray-700 mb-4">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              
-              <div className="flex gap-4">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-medium"
-                  >
-                    Code →
-                  </a>
-                )}
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-indigo-600 hover:text-indigo-800 font-medium"
-                  >
-                    Live Demo →
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.h2
+            initial={{ y: -20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold text-center text-gray-900 mb-12"
+          >
+            Featured Projects
+          </motion.h2>
+          
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                onClick={() => setSelectedProject(project)}
+                className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg shadow-lg p-6 hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden group"
+              >
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-gray-700 mb-4">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech, techIndex) => (
+                      <motion.span
+                        key={techIndex}
+                        whileHover={{ scale: 1.1 }}
+                        className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex gap-4 items-center">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
+                      >
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Code
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-indigo-600 hover:text-indigo-800 font-medium"
+                      >
+                        Live Demo →
+                      </a>
+                    )}
+                    <span className="text-gray-400 text-sm ml-auto">Click for details</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-8">
+                <div className="flex justify-between items-start mb-6">
+                  <h2 className="text-3xl font-bold text-gray-900">{selectedProject.title}</h2>
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <p className="text-lg text-gray-700 mb-6">
+                  {selectedProject.fullDescription || selectedProject.description}
+                </p>
+                
+                {selectedProject.highlights && (
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Key Highlights</h3>
+                    <ul className="space-y-2">
+                      {selectedProject.highlights.map((highlight, index) => (
+                        <li key={index} className="flex items-start">
+                          <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span className="text-gray-700">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="flex gap-4">
+                  {selectedProject.github && (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-center font-medium"
+                    >
+                      View on GitHub
+                    </a>
+                  )}
+                  {selectedProject.live && (
+                    <a
+                      href={selectedProject.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center font-medium"
+                    >
+                      View Live Demo
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
-
