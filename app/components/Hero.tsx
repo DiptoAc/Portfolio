@@ -17,7 +17,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full blur-2xl opacity-60 animate-pulse"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-xl opacity-40"></div>
             <img
-              src="/profilee.jpg"
+              src="/profile.jpeg"
               alt="Sudipto Acharjee"
               className="relative w-72 h-72 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-8 border-gray-800 ring-4 ring-blue-400/50"
             />
