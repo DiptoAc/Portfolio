@@ -25,6 +25,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Force proper SVG sizing */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
