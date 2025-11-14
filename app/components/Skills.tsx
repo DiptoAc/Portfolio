@@ -41,6 +41,7 @@ const FallbackIcon = ({ className }: { className?: string }) => (
 interface SkillItem {
   name: string;
   icon: React.ComponentType<{ className?: string }>;
+  color?: string; // Brand color for the icon
 }
 
 const skillMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -78,41 +79,77 @@ const skillMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "Docker": SiDocker,
 };
 
+// Brand colors for icons
+const iconColors: Record<string, string> = {
+  "React": "#61DAFB",
+  "Next.js": "#000000",
+  "Node.js": "#339933",
+  "Express.js": "#000000",
+  "TypeScript": "#3178C6",
+  "JavaScript": "#F7DF1E",
+  "Python": "#3776AB",
+  "Java": "#ED8B00",
+  "C++": "#00599C",
+  "C": "#A8B9CC",
+  "Kotlin": "#7F52FF",
+  "React Native": "#61DAFB",
+  "Expo": "#000020",
+  "MongoDB": "#47A248",
+  "PostgreSQL": "#336791",
+  "Supabase": "#3ECF8E",
+  "SQLite": "#003B57",
+  "Firebase": "#FFCA28",
+  "HTML5": "#E34F26",
+  "CSS3": "#1572B6",
+  "Tailwind CSS": "#06B6D4",
+  "Git": "#F05032",
+  "GitHub": "#181717",
+  "VS Code": "#007ACC",
+  "Postman": "#FF6C37",
+  "Figma": "#F24E1E",
+  "Vercel": "#000000",
+  "Google Cloud Platform": "#4285F4",
+  "Azure": "#0078D4",
+  "Heroku": "#430098",
+  "Docker": "#2496ED",
+  "Arduino IDE": "#00979D",
+};
+
 export default function Skills() {
   // All skills in a flat array for the marquee
   const allSkills: SkillItem[] = [
-    { name: "React", icon: skillMap["React"] },
-    { name: "Next.js", icon: skillMap["Next.js"] },
-    { name: "Node.js", icon: skillMap["Node.js"] },
-    { name: "Express.js", icon: skillMap["Express.js"] },
-    { name: "TypeScript", icon: skillMap["TypeScript"] },
-    { name: "JavaScript", icon: skillMap["JavaScript"] },
-    { name: "Python", icon: skillMap["Python"] },
-    { name: "Java", icon: skillMap["Java"] },
-    { name: "C++", icon: skillMap["C++"] },
-    { name: "C", icon: skillMap["C"] },
-    { name: "Kotlin", icon: skillMap["Kotlin"] },
-    { name: "React Native", icon: skillMap["React Native"] },
-    { name: "Expo", icon: skillMap["Expo"] },
-    { name: "MongoDB", icon: skillMap["MongoDB"] },
-    { name: "PostgreSQL", icon: skillMap["PostgreSQL"] },
-    { name: "Supabase", icon: skillMap["Supabase"] },
-    { name: "SQLite", icon: skillMap["SQLite"] },
-    { name: "Firebase", icon: skillMap["Firebase"] },
-    { name: "HTML5", icon: skillMap["HTML5"] },
-    { name: "CSS3", icon: skillMap["CSS3"] },
-    { name: "Tailwind CSS", icon: skillMap["Tailwind CSS"] },
-    { name: "Git", icon: skillMap["Git"] },
-    { name: "GitHub", icon: skillMap["GitHub"] },
-    { name: "VS Code", icon: skillMap["VS Code"] },
-    { name: "Postman", icon: skillMap["Postman"] },
-    { name: "Figma", icon: skillMap["Figma"] },
-    { name: "Vercel", icon: skillMap["Vercel"] },
-    { name: "Google Cloud Platform", icon: skillMap["Google Cloud Platform"] },
-    { name: "Azure", icon: skillMap["Azure"] },
-    { name: "Heroku", icon: skillMap["Heroku"] },
-    { name: "Docker", icon: skillMap["Docker"] },
-    { name: "Arduino IDE", icon: skillMap["Arduino IDE"] },
+    { name: "React", icon: skillMap["React"], color: iconColors["React"] },
+    { name: "Next.js", icon: skillMap["Next.js"], color: iconColors["Next.js"] },
+    { name: "Node.js", icon: skillMap["Node.js"], color: iconColors["Node.js"] },
+    { name: "Express.js", icon: skillMap["Express.js"], color: iconColors["Express.js"] },
+    { name: "TypeScript", icon: skillMap["TypeScript"], color: iconColors["TypeScript"] },
+    { name: "JavaScript", icon: skillMap["JavaScript"], color: iconColors["JavaScript"] },
+    { name: "Python", icon: skillMap["Python"], color: iconColors["Python"] },
+    { name: "Java", icon: skillMap["Java"], color: iconColors["Java"] },
+    { name: "C++", icon: skillMap["C++"], color: iconColors["C++"] },
+    { name: "C", icon: skillMap["C"], color: iconColors["C"] },
+    { name: "Kotlin", icon: skillMap["Kotlin"], color: iconColors["Kotlin"] },
+    { name: "React Native", icon: skillMap["React Native"], color: iconColors["React Native"] },
+    { name: "Expo", icon: skillMap["Expo"], color: iconColors["Expo"] },
+    { name: "MongoDB", icon: skillMap["MongoDB"], color: iconColors["MongoDB"] },
+    { name: "PostgreSQL", icon: skillMap["PostgreSQL"], color: iconColors["PostgreSQL"] },
+    { name: "Supabase", icon: skillMap["Supabase"], color: iconColors["Supabase"] },
+    { name: "SQLite", icon: skillMap["SQLite"], color: iconColors["SQLite"] },
+    { name: "Firebase", icon: skillMap["Firebase"], color: iconColors["Firebase"] },
+    { name: "HTML5", icon: skillMap["HTML5"], color: iconColors["HTML5"] },
+    { name: "CSS3", icon: skillMap["CSS3"], color: iconColors["CSS3"] },
+    { name: "Tailwind CSS", icon: skillMap["Tailwind CSS"], color: iconColors["Tailwind CSS"] },
+    { name: "Git", icon: skillMap["Git"], color: iconColors["Git"] },
+    { name: "GitHub", icon: skillMap["GitHub"], color: iconColors["GitHub"] },
+    { name: "VS Code", icon: skillMap["VS Code"], color: iconColors["VS Code"] },
+    { name: "Postman", icon: skillMap["Postman"], color: iconColors["Postman"] },
+    { name: "Figma", icon: skillMap["Figma"], color: iconColors["Figma"] },
+    { name: "Vercel", icon: skillMap["Vercel"], color: iconColors["Vercel"] },
+    { name: "Google Cloud Platform", icon: skillMap["Google Cloud Platform"], color: iconColors["Google Cloud Platform"] },
+    { name: "Azure", icon: skillMap["Azure"], color: iconColors["Azure"] },
+    { name: "Heroku", icon: skillMap["Heroku"], color: iconColors["Heroku"] },
+    { name: "Docker", icon: skillMap["Docker"], color: iconColors["Docker"] },
+    { name: "Arduino IDE", icon: skillMap["Arduino IDE"], color: iconColors["Arduino IDE"] },
   ];
 
   // Duplicate skills for seamless loop
@@ -174,7 +211,10 @@ export default function Skills() {
                     key={`skill-1-${index}`}
                     className="px-6 py-3 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 backdrop-blur-sm text-slate-200 font-medium text-lg whitespace-nowrap hover:border-sky-400/50 hover:from-sky-900/30 hover:to-sky-800/30 transition-all duration-300 hover:scale-105 cursor-default flex-shrink-0 flex items-center gap-3"
                   >
-                    <div className="w-6 h-6 flex-shrink-0 icon-wrapper [&>svg]:w-full [&>svg]:h-full">
+                    <div 
+                      className="w-6 h-6 flex-shrink-0 skill-icon [&>svg]:w-full [&>svg]:h-full"
+                      style={{ color: skill.color || 'currentColor' }}
+                    >
                       <IconComponent />
                     </div>
                     <span>{skill.name}</span>
@@ -194,7 +234,10 @@ export default function Skills() {
                     key={`skill-2-${index}`}
                     className="px-6 py-3 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 backdrop-blur-sm text-slate-200 font-medium text-lg whitespace-nowrap hover:border-fuchsia-400/50 hover:from-fuchsia-900/30 hover:to-fuchsia-800/30 transition-all duration-300 hover:scale-105 cursor-default flex-shrink-0 flex items-center gap-3"
                   >
-                    <div className="w-6 h-6 flex-shrink-0 icon-wrapper [&>svg]:w-full [&>svg]:h-full">
+                    <div 
+                      className="w-6 h-6 flex-shrink-0 skill-icon [&>svg]:w-full [&>svg]:h-full"
+                      style={{ color: skill.color || 'currentColor' }}
+                    >
                       <IconComponent />
                     </div>
                     <span>{skill.name}</span>

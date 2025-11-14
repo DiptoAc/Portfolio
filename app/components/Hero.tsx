@@ -10,42 +10,48 @@ export default function Hero() {
   const opacity = useTransform(scrollY, [0, 500], [1, 0.45]);
   
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
-  const [particles, setParticles] = useState<Array<{ left: number; top: number }>>([]);
-  const [mounted, setMounted] = useState(false);
+  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; duration: number; delay: number }>>([]);
 
-  // Generate particle positions only on client side
   useEffect(() => {
-    setMounted(true);
-    setParticles(
-      Array.from({ length: 20 }, () => ({
-        left: Math.random() * 100,
-        top: Math.random() * 100,
-      }))
-    );
+    // Generate floating particles
+    const particleCount = 50;
+    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2, // 2-6px
+      duration: Math.random() * 25 + 20, // 20-45s
+      delay: Math.random() * 10,
+    }));
+    setParticles(newParticles);
   }, []);
 
   useEffect(() => {
     let animationFrameId: number;
+    let currentX = 0;
+    let currentY = 0;
     
     const handleMouseMove = (e: MouseEvent) => {
-      // Update particle parallax
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
+      const targetX = e.clientX;
+      const targetY = e.clientY;
       
-      // Use requestAnimationFrame for smooth gradient updates
+      const animate = () => {
+        // Smooth interpolation (easing factor)
+        currentX += (targetX - currentX) * 0.15;
+        currentY += (targetY - currentY) * 0.15;
+        
+        setMousePosition({ x: currentX, y: currentY });
+        
+        // Continue animating if we're not close enough
+        if (Math.abs(targetX - currentX) > 1 || Math.abs(targetY - currentY) > 1) {
+          animationFrameId = requestAnimationFrame(animate);
+        }
+      };
+      
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
-      
-      animationFrameId = requestAnimationFrame(() => {
-        // Update gradient position based on mouse (0-100% range)
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        setGradientPosition({ x, y });
-      });
+      animationFrameId = requestAnimationFrame(animate);
     };
     
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -59,16 +65,50 @@ export default function Hero() {
 
   return (
     <section 
-      className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-slate-950"
-      style={{
-        background: `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
-          rgba(59, 130, 246, 0.25) 0%, 
-          rgba(139, 92, 246, 0.2) 25%, 
-          rgba(236, 72, 153, 0.15) 45%,
-          rgba(15, 23, 42, 0.95) 75%,
-          rgb(2, 6, 23) 100%)`,
-      }}
+      className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900"
     >
+      {/* Mouse spotlight effect */}
+      <div
+        className="pointer-events-none fixed inset-0 opacity-0 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(circle 400px at ${mousePosition.x}px ${mousePosition.y}px, 
+            rgba(59, 130, 246, 0.08) 0%, 
+            rgba(139, 92, 246, 0.05) 30%, 
+            transparent 70%)`,
+          opacity: mousePosition.x > 0 && mousePosition.y > 0 ? 1 : 0,
+        }}
+      />
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full"
+            style={{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              background: `radial-gradient(circle, rgba(148, 163, 184, 0.6) 0%, rgba(148, 163, 184, 0.2) 50%, transparent 100%)`,
+              boxShadow: `0 0 ${particle.size * 2}px rgba(148, 163, 184, 0.3)`,
+            }}
+            animate={{
+              y: [0, -50, 0],
+              x: [0, Math.sin(particle.id) * 30, 0],
+              opacity: [0.2, 0.6, 0.2],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+      
       {/* Animated Grid Background */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -124,34 +164,6 @@ export default function Hero() {
           className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob-rotate animation-delay-6000"
         />
       </div>
-      
-      {/* Floating particles - only render on client */}
-      {mounted && (
-        <motion.div 
-          style={{ x: mousePosition.x, y: mousePosition.y }}
-          className="absolute inset-0 pointer-events-none"
-        >
-          {particles.map((particle, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-blue-400 rounded-full opacity-20 particle-dot"
-              style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.8, 0.2],
-              }}
-              transition={{
-                duration: 3 + (i * 0.2),
-                repeat: Infinity,
-                delay: i * 0.1,
-              }}
-            />
-          ))}
-        </motion.div>
-      )}
       
       <motion.div 
         className="container mx-auto px-6 py-20 relative z-10"

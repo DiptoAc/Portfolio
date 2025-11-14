@@ -32,6 +32,19 @@ svg {
   max-height: 100%;
 }
 
+/* Allow skill icons to show their brand colors */
+.skill-icon svg {
+  fill: currentColor !important;
+}
+
+.skill-icon svg path,
+.skill-icon svg circle,
+.skill-icon svg rect,
+.skill-icon svg polygon,
+.skill-icon svg g {
+  fill: currentColor !important;
+}
+
 /* Ensure Tailwind width/height classes work */
 .w-6 {
   width: 1.5rem !important;
