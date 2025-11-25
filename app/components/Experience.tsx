@@ -71,7 +71,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
+    <section id="experience" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-20 left-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-50" />
       <div className="absolute bottom-20 right-0 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl opacity-50" />
@@ -82,7 +82,7 @@ export default function Experience() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center text-slate-100 mb-4"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-100 mb-4"
         >
           Experience & Leadership
         </motion.h2>
@@ -135,7 +135,7 @@ export default function Experience() {
                       <motion.span
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl"
+                        className="text-2xl sm:text-3xl"
                       >
                         {exp.icon}
                       </motion.span>

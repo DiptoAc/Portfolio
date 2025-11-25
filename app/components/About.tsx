@@ -39,7 +39,7 @@ function AnimatedCounter({ target, label }: { target: number; label: string }) {
       whileHover={{ scale: 1.05, y: -5 }}
       className="text-center p-6 bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-lg shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-600/30"
     >
-      <div className="text-4xl font-bold text-sky-400 mb-2">{count}+</div>
+      <div className="text-3xl sm:text-4xl font-bold text-sky-400 mb-2">{count}+</div>
       <div className="text-slate-200">{label}</div>
     </motion.div>
   );
@@ -66,7 +66,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2" />
@@ -77,7 +77,7 @@ export default function About() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center text-slate-100 mb-12"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-100 mb-8 sm:mb-10 md:mb-12"
         >
           About Me
         </motion.h2>
@@ -89,16 +89,16 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.02 }}
-            className="rounded-3xl border border-slate-600/30 bg-gradient-to-br from-slate-900/10 via-slate-800/35 to-slate-900/5 p-8 shadow-2xl hover:shadow-[0_30px_60px_rgba(14,116,144,0.35)] transition-all mb-12 backdrop-blur"
+            className="rounded-3xl border border-slate-600/30 bg-gradient-to-br from-slate-900/10 via-slate-800/35 to-slate-900/5 p-6 sm:p-8 shadow-2xl hover:shadow-[0_30px_60px_rgba(14,116,144,0.35)] transition-all mb-10 sm:mb-12 backdrop-blur"
           >
             <motion.p 
               variants={itemVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-lg text-slate-200 mb-6"
+              className="text-base sm:text-lg text-slate-200 mb-4 sm:mb-6"
             >
-              I'm a Computer Science student at <strong className="text-sky-300">Shahjalal University of Science and Technology</strong> (SUST), 
+              I&apos;m a Computer Science student at <strong className="text-sky-300">Shahjalal University of Science and Technology</strong> (SUST), 
               passionate about building innovative web and mobile applications. I have experience in <strong className="text-sky-300">Full-Stack 
               Development, Mobile Development</strong>, and leadership roles across various technical and community initiatives.
             </motion.p>
@@ -109,9 +109,9 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-slate-200 mb-6"
+              className="text-base sm:text-lg text-slate-200 mb-4 sm:mb-6"
             >
-              With expertise in <strong className="text-sky-300">React Native, Kotlin, and modern web technologies</strong>, I've built employee 
+              With expertise in <strong className="text-sky-300">React Native, Kotlin, and modern web technologies</strong>, I&apos;ve built employee 
               management systems, cross-platform mobile applications, and IoT-based solutions. I also have a background in 
               <strong className="text-sky-300"> Digital Services Freelancing</strong>, where I developed skills in SEO, visual design, and client management.
             </motion.p>
@@ -122,11 +122,11 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="text-lg text-slate-200"
+              className="text-base sm:text-lg text-slate-200"
             >
-              As a competitive programmer, I've solved <strong className="text-sky-300">1500+ problems</strong> and participated as an 
-              <strong className="text-sky-300"> ICPC Regionalist 2025</strong>. When I'm not coding, you'll find me on the sports field - 
-              I'm an active player in football, cricket, and basketball tournaments.
+              As a competitive programmer, I&apos;ve solved <strong className="text-sky-300">1500+ problems</strong> and participated as an 
+              <strong className="text-sky-300"> ICPC Regionalist 2025</strong>. When I&apos;m not coding, you&apos;ll find me on the sports field - 
+              I&apos;m an active player in football, cricket, and basketball tournaments.
             </motion.p>
           </motion.div>
           
@@ -147,7 +147,7 @@ export default function About() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="text-center p-6 bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-lg shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-600/30"
             >
-              <div className="text-4xl font-bold text-fuchsia-400 mb-2">ICPC</div>
+              <div className="text-3xl sm:text-4xl font-bold text-fuchsia-400 mb-2">ICPC</div>
               <div className="text-slate-200">Regionalist 2025</div>
             </motion.div>
           </motion.div>

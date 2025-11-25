@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, startTransition } from "react";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -13,17 +13,16 @@ export default function Hero() {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; duration: number; delay: number }>>([]);
 
   useEffect(() => {
-    // Generate floating particles
     const particleCount = 50;
     const newParticles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 4 + 2, // 2-6px
-      duration: Math.random() * 25 + 20, // 20-45s
+      size: Math.random() * 4 + 2,
+      duration: Math.random() * 25 + 20,
       delay: Math.random() * 10,
     }));
-    setParticles(newParticles);
+    startTransition(() => setParticles(newParticles));
   }, []);
 
   useEffect(() => {
@@ -65,7 +64,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900"
+      className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900"
     >
       {/* Mouse spotlight effect */}
       <div
@@ -166,7 +165,7 @@ export default function Hero() {
       </div>
       
       <motion.div 
-        className="container mx-auto px-6 py-20 relative z-10"
+        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 relative z-10"
         style={{ opacity }}
       >
         <div className="flex flex-col items-center text-center">
@@ -200,7 +199,7 @@ export default function Hero() {
                 transition={{ type: "spring", stiffness: 300 }}
                 src="/profilee.jpg"
                 alt="Sudipto Acharjee"
-                className="relative w-72 h-72 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-gray-900 animate-float"
+                className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full object-cover shadow-2xl border-4 border-gray-900 animate-float"
               />
             </div>
             
@@ -231,7 +230,7 @@ export default function Hero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4"
           >
             <span className="bg-gradient-to-r from-sky-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent">
               Sudipto Acharjee
@@ -245,7 +244,7 @@ export default function Hero() {
             className="relative mb-6"
           >
             <motion.p 
-              className="text-xl md:text-2xl font-semibold glass-dark px-6 py-3 rounded-full inline-block"
+              className="text-base sm:text-lg md:text-2xl font-semibold glass-dark px-5 py-2 sm:px-6 sm:py-3 rounded-full inline-block"
               whileHover={{ scale: 1.05 }}
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
@@ -258,7 +257,7 @@ export default function Hero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-lg text-slate-200 max-w-2xl mb-8 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mb-6 sm:mb-8 leading-relaxed"
           >
             Computer Science Student at SUST | Building innovative solutions with React, Next.js, Python & Cloud Technologies
           </motion.p>
@@ -276,7 +275,7 @@ export default function Hero() {
               }}
               whileTap={{ scale: 0.95 }}
               href="#projects"
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full overflow-hidden shadow-xl font-semibold"
+              className="group relative px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full overflow-hidden shadow-xl font-semibold"
             >
               <span className="relative z-10 flex items-center gap-2">
                 View Projects
@@ -298,7 +297,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#contact"
-              className="px-8 py-4 glass-dark text-blue-300 rounded-full shadow-xl border border-blue-400/30 hover:border-blue-400/60 transition-all font-semibold backdrop-blur-md"
+              className="px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 glass-dark text-blue-300 rounded-full shadow-xl border border-blue-400/30 hover:border-blue-400/60 transition-all font-semibold backdrop-blur-md"
             >
               Get in Touch
             </motion.a>
@@ -308,7 +307,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="flex gap-6 mt-8"
+            className="flex gap-4 sm:gap-6 mt-6 sm:mt-8"
           >
             <motion.a
               whileHover={{ 

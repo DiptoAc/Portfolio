@@ -81,7 +81,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
+      <section id="projects" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl opacity-50" />
         <div className="absolute bottom-20 left-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-50" />
@@ -92,12 +92,12 @@ export default function Projects() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-center text-slate-100 mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-100 mb-8 sm:mb-10 md:mb-12"
           >
             Featured Projects
           </motion.h2>
           
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -113,7 +113,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-sky-400 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-slate-100 mb-3 group-hover:text-sky-400 transition-colors">
                     {project.title}
                   </h3>
                   
@@ -185,9 +185,9 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
               className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-600/30"
             >
-              <div className="p-8">
+              <div className="p-5 sm:p-6 md:p-8">
                 <div className="flex justify-between items-start mb-6">
-                  <h2 className="text-3xl font-bold text-slate-100">{selectedProject.title}</h2>
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-100">{selectedProject.title}</h2>
                   <button
                     onClick={() => setSelectedProject(null)}
                     className="text-slate-400 hover:text-slate-200 transition-colors"
@@ -198,7 +198,7 @@ export default function Projects() {
                   </button>
                 </div>
                 
-                <p className="text-lg text-slate-300 mb-6">
+                <p className="text-base sm:text-lg text-slate-300 mb-6">
                   {selectedProject.fullDescription || selectedProject.description}
                 </p>
                 

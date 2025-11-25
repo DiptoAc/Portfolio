@@ -156,7 +156,7 @@ export default function Skills() {
   const duplicatedSkills = [...allSkills, ...allSkills];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-sky-500/20 rounded-full filter blur-3xl opacity-30 animate-blob" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-fuchsia-500/20 rounded-full filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
@@ -170,7 +170,7 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <motion.h2
-            className="text-5xl md:text-6xl font-bold mb-4 relative inline-block"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 relative inline-block"
           >
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Technical Skills
@@ -189,27 +189,27 @@ export default function Skills() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-slate-300 max-w-2xl mx-auto mt-6"
+            className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-4 sm:mt-6"
           >
             Here are the technologies and tools I work with to bring ideas to life
           </motion.p>
         </motion.div>
 
         {/* Scrolling Marquee Container */}
-        <div className="relative w-full overflow-hidden py-8">
+        <div className="relative w-full overflow-hidden py-6 sm:py-8">
           {/* Gradient fade on edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-950 via-slate-950 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-950 via-slate-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-slate-950 via-slate-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-slate-950 via-slate-950 to-transparent z-10 pointer-events-none" />
           
           {/* First marquee - scrolling left */}
           <div className="flex gap-4 mb-4 overflow-hidden">
-            <div className="flex gap-4 animate-marquee" style={{ width: "max-content" }}>
+            <div className="flex gap-3 sm:gap-4 animate-marquee" style={{ width: "max-content" }}>
               {duplicatedSkills.map((skill, index) => {
                 const IconComponent = skill.icon;
                 return (
                   <div
                     key={`skill-1-${index}`}
-                    className="px-6 py-3 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 backdrop-blur-sm text-slate-200 font-medium text-lg whitespace-nowrap hover:border-sky-400/50 hover:from-sky-900/30 hover:to-sky-800/30 transition-all duration-300 hover:scale-105 cursor-default flex-shrink-0 flex items-center gap-3"
+                    className="px-4 py-2 sm:px-5 sm:py-2 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 backdrop-blur-sm text-slate-200 font-medium text-sm sm:text-base whitespace-nowrap hover:border-sky-400/50 hover:from-sky-900/30 hover:to-sky-800/30 transition-all duration-300 hover:scale-105 cursor-default flex-shrink-0 flex items-center gap-2 sm:gap-3"
                   >
                     <div 
                       className="w-6 h-6 flex-shrink-0 skill-icon [&>svg]:w-full [&>svg]:h-full"
@@ -225,14 +225,14 @@ export default function Skills() {
           </div>
 
           {/* Second marquee - scrolling right (reverse direction) */}
-          <div className="flex gap-4 overflow-hidden">
-            <div className="flex gap-4 animate-marquee-reverse" style={{ width: "max-content" }}>
+          <div className="flex gap-3 sm:gap-4 overflow-hidden">
+            <div className="flex gap-3 sm:gap-4 animate-marquee-reverse" style={{ width: "max-content" }}>
               {duplicatedSkills.map((skill, index) => {
                 const IconComponent = skill.icon;
                 return (
                   <div
                     key={`skill-2-${index}`}
-                    className="px-6 py-3 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 backdrop-blur-sm text-slate-200 font-medium text-lg whitespace-nowrap hover:border-fuchsia-400/50 hover:from-fuchsia-900/30 hover:to-fuchsia-800/30 transition-all duration-300 hover:scale-105 cursor-default flex-shrink-0 flex items-center gap-3"
+                    className="px-4 py-2 sm:px-5 sm:py-2 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-700/50 border border-slate-600/30 backdrop-blur-sm text-slate-200 font-medium text-sm sm:text-base whitespace-nowrap hover:border-fuchsia-400/50 hover:from-fuchsia-900/30 hover:to-fuchsia-800/30 transition-all duration-300 hover:scale-105 cursor-default flex-shrink-0 flex items-center gap-2 sm:gap-3"
                   >
                     <div 
                       className="w-6 h-6 flex-shrink-0 skill-icon [&>svg]:w-full [&>svg]:h-full"
@@ -254,7 +254,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 text-center"
+          className="mt-10 sm:mt-12 md:mt-16 text-center"
         >
           <p className="text-slate-400 text-sm">
             I constantly try to improve my stack
