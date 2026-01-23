@@ -28,8 +28,13 @@ export default function Certifications() {
         issuer: "Amazon Web Services (AWS)",
         date: "2024",
         link: "/Certificates/aws_cloud_foundations.pdf",
-    }
-    // Add more here...
+    },
+    {
+        name: "Ratatype - Touch Typing Certificate",
+        issuer: "Ratatype",
+        date: "2023",
+        link: "/Certificates/ratatype.pdf",
+    },
   ];
 
   return (

@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState, startTransition } from "react";
+import Typewriter from 'typewriter-effect';
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -243,14 +244,27 @@ export default function Hero() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="relative mb-6"
           >
-            <motion.p 
-              className="text-base sm:text-lg md:text-2xl font-semibold glass-dark px-5 py-2 sm:px-6 sm:py-3 rounded-full inline-block"
+            <motion.div
+              className="text-base sm:text-lg md:text-2xl font-semibold glass-dark px-5 py-2 sm:px-6 sm:py-3 rounded-full inline-block min-h-[3rem] flex items-center"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
-                Full Stack Developer | AI Enthusiast | Competitive Programmer
+              <span className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                <Typewriter
+                  options={{
+                    strings: [
+                      'Full Stack Developer',
+                      'AI Enthusiast',
+                      'Competitive Programmer',
+                      'Next.js Specialist'
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 50,
+                    delay: 75,
+                  }}
+                />
               </span>
-            </motion.p>
+            </motion.div>
           </motion.div>
           
           <motion.p 
