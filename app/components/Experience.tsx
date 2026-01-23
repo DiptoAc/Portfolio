@@ -17,6 +17,19 @@ export default function Experience() {
 
   const experiences: ExperienceItem[] = [
     {
+      title: "Competitive Programmer",
+      organization: "ICPC Regional - 14th Place",
+      period: "2024 - 2025",
+      description: [
+        "Achieved a rank of 14th in the whole of Bangladesh during the ICPC Regional contest",
+        "Solved complex algorithmic problems involving advanced data structures and dynamic programming",
+        "Collaborated in a three-person team to optimize code performance and logic under strict time constraints",
+        "Demonstrated proficiency in C++ and rapid problem-solving in a high-pressure competitive environment"
+      ],
+      type: "leadership",
+      icon: "🏆"
+    },
+    {
       title: "Digital Services Freelancer",
       organization: "Fiverr",
       period: "Sep 2021 - Jan 2023",
@@ -52,13 +65,13 @@ export default function Experience() {
         "Collaborated with peers to tackle complex mathematical challenges",
         "Enhanced logical reasoning and creative approach to mathematical problems"
       ],
-      type: "leadership",
+      type: "work",
       icon: "🏆"
     },
     {
       title: "Club Member",
-      organization: "SUST Math & Programming Club",
-      period: "Apr 2024 - Present",
+      organization: "SUST ACM LAB - Competitive Programming Club",
+      period: "Apr 2022 - Present",
       description: [
         "Active participant in competitive programming activities",
         "Collaborated on problem-solving sessions and contests",
