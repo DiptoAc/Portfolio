@@ -29,8 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      // app/layout.tsx
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}
+        suppressHydrationWarning // Add this line
       >
         {children}
       </body>
