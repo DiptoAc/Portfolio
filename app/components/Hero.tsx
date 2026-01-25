@@ -253,7 +253,7 @@ export default function Hero() {
                   options={{
                     strings: [
                       'Full Stack Developer',
-                      'AI Enthusiast',
+                      'Mathematics Enthusiast',
                       'Competitive Programmer',
                       'Next.js Specialist'
                     ],
