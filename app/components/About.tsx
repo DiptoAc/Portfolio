@@ -31,12 +31,14 @@ function AnimatedCounter({ target, label }: { target: number; label: string }) {
 
   return (
     <motion.div
+    
       ref={ref}
       initial={{ scale: 0.5, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.05, y: -5 }}
+      
       className="text-center p-6 bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-lg shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-600/30"
     >
       <div className="text-3xl sm:text-4xl font-bold text-sky-400 mb-2">{count}+</div>
@@ -55,81 +57,102 @@ export default function About() {
       }
     }
   };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 }
-    }
-  };
-
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2" />
-      
+    <section id="about" className="relative py-20 bg-slate-950 overflow-hidden">
+      {/* Background Glows - Matching the senior's layout depth */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full filter blur-[120px]"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full filter blur-[120px]"></div>
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.h2 
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-100 mb-8 sm:mb-10 md:mb-12"
+          className="text-4xl md:text-5xl font-bold mb-12 text-center"
         >
-          About Me
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            About Me
+          </span>
         </motion.h2>
-        
+
         <div className="max-w-6xl mx-auto">
+          {/* Main Card: Glassmorphism Effect */}
           <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.02 }}
-            className="rounded-3xl border border-slate-600/30 bg-gradient-to-br from-slate-900/10 via-slate-800/35 to-slate-900/5 p-6 sm:p-8 shadow-2xl hover:shadow-[0_30px_60px_rgba(14,116,144,0.35)] transition-all mb-10 sm:mb-12 backdrop-blur"
+            className="mb-10 bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10"
           >
-            <motion.p 
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-base sm:text-lg text-slate-200 mb-4 sm:mb-6"
-            >
-              I&apos;m a Computer Science student at <strong className="text-sky-300">Shahjalal University of Science and Technology</strong> (SUST), 
-              passionate about building innovative web and mobile applications. I have experience in <strong className="text-sky-300">Full-Stack 
-              Development, Mobile Development</strong>, and leadership roles across various technical and community initiatives.
-            </motion.p>
+            <div className="flex flex-col md:flex-row gap-12 items-center">
+              
+              {/* LEFT SIDE: Image with Gradient Border */}
+              <div className="md:w-4/12 w-full">
+                <div className="relative aspect-square group">
+                  {/* The Gradient Glow from Kiriti Bhai's code */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  
+                  <div className="relative bg-slate-900 rounded-2xl p-4 h-full w-full overflow-hidden">
+                    <img
+                      src="/about_image.jpg"
+                      alt="Sudipto Acharjee"
+                      className="rounded-xl w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT SIDE: Text Content */}
+              <div className="md:w-7/12 space-y-6">
+                <div className="space-y-4">
+                  <motion.p 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-lg text-slate-300 leading-relaxed"
+                  >
+                    I'm a passionate <span className="text-blue-400 font-semibold">Full Stack Engineer</span> and CS student at <span className="text-blue-300 font-semibold">SUST</span>, focused on building scalable web applications and solving complex algorithmic challenges.
+                  </motion.p>
+
+                  <motion.p 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-lg text-slate-300 leading-relaxed"
+                  >
+                    I specialize in <span className="text-purple-400 font-semibold">React Native, Next.js, and Python</span>. I love shipping features that combine smooth UI with reliable backend systems, and I'm currently exploring the potential of <span className="text-purple-300 font-semibold">AI/ML workflows</span>.
+                  </motion.p>
+
+                  <motion.p 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-lg text-slate-300 leading-relaxed"
+                  >
+                    As an <span className="text-pink-400 font-semibold">ICPC Regionalist 2025 (Rank 14)</span>, I've tackled <span className="text-pink-300 font-semibold">1500+ problems</span>. Currently based in <span className="text-pink-400 font-semibold">Sylhet, Bangladesh</span>, I enjoy collaborating on high-impact projects and leading technical communities.
+                  </motion.p>
+                </div>
+
+                {/* Badge Tags: Dark Styled */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex flex-wrap gap-3 pt-4"
+                >
+                  <span className="px-3 py-1 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full text-sm font-medium">Problem Solver</span>
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium">ICPC Regionalist</span>
+                  <span className="px-3 py-1 bg-pink-500/10 text-pink-300 border border-pink-500/20 rounded-full text-sm font-medium">SUST ACM Lab</span>
+                  <span className="px-3 py-1 bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 rounded-full text-sm font-medium">Competitive Programmer</span>
+                </motion.div>
             
-            <motion.p 
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-base sm:text-lg text-slate-200 mb-4 sm:mb-6"
-            >
-              With expertise in <strong className="text-sky-300">React Native, Kotlin, and modern web technologies</strong>, I&apos;ve built employee 
-              management systems, cross-platform mobile applications, and IoT-based solutions. I also have a background in 
-              <strong className="text-sky-300"> Digital Services Freelancing</strong>, where I developed skills in SEO, visual design, and client management.
-            </motion.p>
-            
-            <motion.p 
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-base sm:text-lg text-slate-200"
-            >
-              As a competitive programmer, I&apos;ve solved <strong className="text-sky-300">1500+ problems</strong> and participated as an 
-              <strong className="text-sky-300"> ICPC Regionalist 2025</strong>. When I&apos;m not coding, you&apos;ll find me on the sports field - 
-              I&apos;m an active player in football, cricket, and basketball tournaments.
-            </motion.p>
+                
+              </div>
+            </div>
           </motion.div>
-          
+
+          {/* Statistics Counters(3 box in the bottom) */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"

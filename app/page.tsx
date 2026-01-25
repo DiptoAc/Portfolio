@@ -8,6 +8,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Certifications from "./components/Certifications";
+import Test from "./components/Test";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      {/*<Test />*/}
       <Skills />
       <GitHubHeatmap />
       <Projects />

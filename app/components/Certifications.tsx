@@ -23,8 +23,8 @@ export default function Certifications() {
       name: "Problem Solving (Intermediate)",
       issuer: "HackerRank",
       date: "2024",
-      link: "https://www.hackerrank.com/certificates/428fed3d90b3",
-      badge: "/badges/Problem_Solving_badge.png",
+      link: "https://www.hackerrank.com/certificates/a4a1ac8f8500",
+      badge: "/badges/Problem_Solving_Badge.png",
     },
     {
         name: "AWS Academy Graduate - Cloud Foundations - Training Badge",

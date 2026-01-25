@@ -110,7 +110,7 @@ export default function Experience() {
           Professional experience and leadership roles in tech communities
         </motion.p>
         
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-6xl mx-auto relative">
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/50 via-purple-500/50 to-pink-500/50 hidden md:block" />
           
