@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from 'next/link';
 
 interface ExperienceItem {
   title: string;
@@ -32,9 +33,9 @@ export default function Experience() {
     {
       title: "Digital Services Freelancer",
       organization: "Fiverr",
-      period: "Sep 2021 - Jan 2023",
+      period: "Sep 2019 - Jan 2021",
       description: [
-        "Created professional presentations and documents for over 50 clients worldwide",
+        "Created professional presentations and documents for 3 clients worldwide",
         "Delivered high-quality SEO-optimized content and visual design services",
         "Maintained 5-star ratings through exceptional customer service",
         "Managed multiple projects simultaneously with strict deadlines"
@@ -208,6 +209,28 @@ export default function Experience() {
                         </motion.li>
                       ))}
                     </ul>
+
+                    {/* New Link Section */}
+                    {exp.title === "Competitive Programmer" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: expandedIndex === index ? 1 : 0, y: expandedIndex === index ? 0 : 10 }}
+                        className="mt-6 pt-4 border-t border-slate-700/50"
+                      >
+                        <Link 
+                          href="/Cp" 
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/40 text-purple-300 border border-purple-500/40 rounded-lg transition-all group/link"
+                        >
+                          <span>View my competitive programming journey</span>
+                          <svg 
+                            className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" 
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </Link>
+                      </motion.div>
+                    )}
                   </motion.div>
                   
                   {expandedIndex !== index && (

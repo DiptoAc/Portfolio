@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Project {
   title: string;
@@ -11,10 +12,12 @@ interface Project {
   github: string | null;
   live: string | null;
   highlights?: string[];
+  customRoute?: string;
 }
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const router = useRouter();
 
   const projects: Project[] = [
     {
@@ -69,6 +72,7 @@ export default function Projects() {
       tech: ["Arduino", "ESP32-CAM", "C++", "IoT", "Telegram API"],
       github: "https://github.com/rayhanulamint2/Traffic-Violation-Detection-System",
       live: null,
+      customRoute: "/Microprocessor", 
       highlights: [
         "95%+ detection accuracy",
         "Real-time image capture",
@@ -76,13 +80,35 @@ export default function Projects() {
         "Wi-Fi cloud communication",
         "Instant Telegram notifications"
       ]
-    }
+    },
+    {
+      title: "Professional Engineer Portfolio",
+      description: "A high-performance personal brand platform featuring glassmorphism design, interactive 3D-style carousels, and automated WhatsApp/Email integration for lead generation.",
+      fullDescription: "A premium, dark-themed portfolio developed for an Executive Support Engineer. The project focuses on high-end UI/UX using Framer Motion for smooth transitions, a custom-built 3D-style rotating photo gallery, and direct lead generation tools via WhatsApp and Gmail API integration. It's fully responsive and optimized for rapid loading on Vercel.",
+      tech: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
+      github: "https://github.com/DiptoAc/Rahul-s-Portfolio",
+      live: "https://rahulchandradey.vercel.app/",
+      highlights: [
+        "Interactive 3D-style Photo Carousel",
+        "Automated Lead Generation via WhatsApp/Email",
+        "Sophisticated Glassmorphism UI",
+        "Dynamic Certificate & Experience Timeline",
+        "SEO Optimized & Fully Responsive Design"
+      ]
+    },
   ];
+
+  const handleProjectClick = (project: Project) => {
+    if (project.customRoute) {
+      router.push(project.customRoute);
+    } else {
+      setSelectedProject(project);
+    }
+  };
 
   return (
     <>
       <section id="projects" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl opacity-50" />
         <div className="absolute bottom-20 left-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-50" />
         
@@ -92,12 +118,12 @@ export default function Projects() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-100 mb-8 sm:mb-10 md:mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-100 mb-12"
           >
             Featured Projects
           </motion.h2>
           
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -106,10 +132,10 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                onClick={() => setSelectedProject(project)}
+                // FIXED: Changed from setSelectedProject to handleProjectClick
+                onClick={() => handleProjectClick(project)} 
                 className="bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-lg shadow-lg p-6 hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden group border border-slate-600/30"
               >
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 
                 <div className="relative z-10">
@@ -117,49 +143,30 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   
-                  <p className="text-slate-300 mb-4">
-                    {project.description}
-                  </p>
+                  <p className="text-slate-300 mb-4">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
-                      <motion.span
-                        key={techIndex}
-                        whileHover={{ scale: 1.1 }}
-                        className="px-3 py-1 bg-slate-700/50 text-sky-300 text-sm rounded-full border border-slate-600/30"
-                      >
+                      <span key={techIndex} className="px-3 py-1 bg-slate-700/50 text-sky-300 text-sm rounded-full border border-slate-600/30">
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                   
                   <div className="flex gap-4 items-center">
                     {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="text-sky-400 hover:text-sky-300 font-medium flex items-center gap-1"
-                      >
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        Code
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-sky-400 hover:text-sky-300 font-medium flex items-center gap-1">
+                         Code
                       </a>
                     )}
                     {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="text-fuchsia-400 hover:text-fuchsia-300 font-medium"
-                      >
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-fuchsia-400 hover:text-fuchsia-300 font-medium">
                         Live Demo →
                       </a>
                     )}
-                    <span className="text-slate-400 text-sm ml-auto">Click for details</span>
+                    <span className="text-slate-400 text-sm ml-auto font-medium group-hover:text-white transition-colors">
+                      {project.customRoute ? "View Microprocessor Page →" : "Click for details"}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -168,7 +175,6 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Project Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -185,48 +191,40 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
               className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-600/30"
             >
-              <div className="p-5 sm:p-6 md:p-8">
+              <div className="p-8">
                 <div className="flex justify-between items-start mb-6">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-100">{selectedProject.title}</h2>
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    className="text-slate-400 hover:text-slate-200 transition-colors"
-                  >
+                  <h2 className="text-3xl font-bold text-slate-100">{selectedProject.title}</h2>
+                  <button onClick={() => setSelectedProject(null)} className="text-slate-400 hover:text-slate-200 transition-colors">
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
                 
-                <p className="text-base sm:text-lg text-slate-300 mb-6">
-                  {selectedProject.fullDescription || selectedProject.description}
-                </p>
+                <p className="text-lg text-slate-300 mb-6">{selectedProject.fullDescription || selectedProject.description}</p>
                 
                 {selectedProject.highlights && (
                   <div className="mb-6">
                     <h3 className="text-xl font-semibold text-slate-100 mb-3">Key Highlights</h3>
                     <ul className="space-y-2">
-                      {selectedProject.highlights.map((highlight, index) => (
-                        <li key={index} className="flex items-start">
+                      {selectedProject.highlights.map((h, i) => (
+                        <li key={i} className="flex items-start">
                           <svg className="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                           </svg>
-                          <span className="text-slate-300">{highlight}</span>
+                          <span className="text-slate-300">{h}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
                 
-                <div className="mb-6">
+                <div className="mb-8">
                   <h3 className="text-xl font-semibold text-slate-100 mb-3">Technologies Used</h3>
                   <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-4 py-2 bg-slate-700/50 text-sky-300 rounded-full font-medium border border-slate-600/30"
-                      >
-                        {tech}
+                    {selectedProject.tech.map((t, i) => (
+                      <span key={i} className="px-4 py-2 bg-slate-700/50 text-sky-300 rounded-full font-medium border border-slate-600/30">
+                        {t}
                       </span>
                     ))}
                   </div>
@@ -234,22 +232,12 @@ export default function Projects() {
                 
                 <div className="flex gap-4">
                   {selectedProject.github && (
-                    <a
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 px-6 py-3 bg-slate-800 text-slate-100 rounded-lg hover:bg-slate-700 transition-colors text-center font-medium border border-slate-600/30"
-                    >
+                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1 px-6 py-3 bg-slate-800 text-slate-100 rounded-lg hover:bg-slate-700 transition-colors text-center font-medium border border-slate-600/30">
                       View on GitHub
                     </a>
                   )}
                   {selectedProject.live && (
-                    <a
-                      href={selectedProject.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors text-center font-medium"
-                    >
+                    <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors text-center font-medium">
                       View Live Demo
                     </a>
                   )}
