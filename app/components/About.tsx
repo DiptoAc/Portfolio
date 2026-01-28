@@ -112,9 +112,8 @@ export default function About() {
                     transition={{ delay: 0.2 }}
                     className="text-lg text-slate-300 leading-relaxed"
                   >
-                    I'm a passionate <span className="text-blue-400 font-semibold">Full Stack Engineer</span> and CS student at <span className="text-blue-300 font-semibold">SUST</span>, focused on building scalable web applications and solving complex algorithmic challenges.
-                  </motion.p>
-
+                    </motion.p>
+                    As an <span className="text-pink-400 font-semibold">ICPC Regionalist 2025 (Rank 14)</span>, I've tackled <span className="text-pink-300 font-semibold">1500+ problems</span>. Currently based in <span className="text-pink-400 font-semibold">Sylhet, Bangladesh</span>, I enjoy collaborating on high-impact projects and leading technical communities.
                   <motion.p 
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -130,8 +129,8 @@ export default function About() {
                     transition={{ delay: 0.4 }}
                     className="text-lg text-slate-300 leading-relaxed"
                   >
-                    As an <span className="text-pink-400 font-semibold">ICPC Regionalist 2025 (Rank 14)</span>, I've tackled <span className="text-pink-300 font-semibold">1500+ problems</span>. Currently based in <span className="text-pink-400 font-semibold">Sylhet, Bangladesh</span>, I enjoy collaborating on high-impact projects and leading technical communities.
-                  </motion.p>
+                    As a passionate <span className="text-blue-400 font-semibold">Full Stack Developer</span> and CS student at <span className="text-blue-300 font-semibold">SUST</span>, focused on building scalable web applications and solving complex algorithmic challenges.
+                    </motion.p>
                 </div>
 
                 {/* Badge Tags: Dark Styled */}

@@ -6,6 +6,7 @@ import CpStats from "./CpStats";
 import SkillTree from "./SkillTree";
 import RadarChart from "./RadarChart";
 import DifficultyMatrix from "./DifficultyMatrix";
+import TopicList from "./TopicList";
 
 const platformLinks = [
   {
@@ -163,7 +164,8 @@ export default function CpPage() {
 
         <DifficultyMatrix />
         <RadarChart />
-        <SkillTree /> 
+        <TopicList />
+        {/*<SkillTree />*/} 
 
         {/* Footer Note */}
         <div className="text-center py-10 border-t border-white/5">

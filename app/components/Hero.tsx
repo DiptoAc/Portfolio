@@ -3,8 +3,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState, startTransition } from "react";
 import Typewriter from 'typewriter-effect';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+
+
 
 export default function Hero() {
+  const router = useRouter();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, 100]);
   const y2 = useTransform(scrollY, [0, 300], [0, -100]);
@@ -273,7 +279,7 @@ export default function Hero() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mb-6 sm:mb-8 leading-relaxed"
           >
-            Computer Science Student at SUST | Building innovative solutions with React, Next.js, Python & Cloud Technologies
+            Computer Science Student at SUST | Compititive Programmer | Building innovative solutions with React, Next.js, Python & Cloud Technologies
           </motion.p>
           
           <motion.div 
@@ -288,11 +294,12 @@ export default function Hero() {
                 boxShadow: "0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.4)" 
               }}
               whileTap={{ scale: 0.95 }}
-              href="#projects"
-              className="group relative px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full overflow-hidden shadow-xl font-semibold"
+              onClick={() => router.push('/Cp')} // This handles the navigation
+              className="group relative cursor-pointer px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full overflow-hidden shadow-xl font-semibold"
             >
               <span className="relative z-10 flex items-center gap-2">
-                View Projects
+                View My CP Journey
+                {/* This span below is what makes the arrow animate */}
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -300,6 +307,8 @@ export default function Hero() {
                   →
                 </motion.span>
               </span>
+              
+              {/* This div below provides the hover color slide effect */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700"
                 initial={{ x: "-100%" }}
