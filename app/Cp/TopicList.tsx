@@ -21,7 +21,7 @@ const cpTopics: Topic[] = [
   },
   {
     category: "Graph & Tree Theory",
-    skills: ["LCA (Binary Lifting)", "SCC (Tarjan's)", "Dijkstra/Bellman-Ford", "Centroid Decomposition", "Max Flow"],
+    skills: ["LCA (Binary Lifting)", "SCC (Kosaraju)", "Dijkstra/Bellman-Ford", "Centroid Decomposition", "Max Flow"],
     color: "from-purple-500 to-pink-500",
   },
   {
@@ -71,6 +71,59 @@ const cpTopics: Topic[] = [
       "Trie Data Structure"
     ],
     color: "from-lime-500 to-green-500",
+  },
+  {
+    category: "Graph & Tree Theory",
+    skills: [
+      "BFS / DFS (Basics)",
+      "Multi-Source BFS",
+      "Floyd-Warshall",
+      "Kruskal’s & MST",
+      "Topological Sort (DAG DP)"
+    ],
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    category: "Advanced Graph Structures",
+    skills: [
+      "Binary Lifting (Successor Graphs)",
+      "Condensation Graphs",
+      "Eulerian Path (Hierholzer’s)",
+      "2-SAT (Logic via SCC)",
+      "Bipartite Check"
+    ],
+    color: "from-fuchsia-500 to-purple-600",
+  },
+  {
+    category: "Network Flow & Matching",
+    skills: [
+      "Edmonds-Karp / Dinic’s",
+      "Max-Flow Min-Cut Theorem",
+      "Bipartite Matching",
+      "Distinct Routes / Edge-Disjoint",
+      "Flow-based Pairings"
+    ],
+    color: "from-blue-600 to-cyan-500",
+  },
+  {
+    category: "Niche & Heuristic Tech",
+    skills: [
+      "Hamiltonian Path (Bitmask DP)",
+      "Warnsdorff’s Rule (Backtracking)",
+      "De Bruijn Sequence Construction",
+      "Knight's Tour Optimizations"
+    ],
+    color: "from-zinc-500 to-slate-700",
+  },
+  {
+    category: "Advanced Tree Techniques",
+    skills: [
+      "Re-Rooting DP (Tree Distances)",
+      "Binary Lifting (LCA & K-th Ancestor)",
+      "Euler Tour + BIT (Subtree Queries)",
+      "Heavy-Light Decomposition (HLD)",
+    ],
+    color: "from-indigo-600 to-blue-700",
   }
 ];
 

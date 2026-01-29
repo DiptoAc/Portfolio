@@ -45,12 +45,12 @@ export default function DifficultyMatrix() {
       {/* Background Decorative Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-8xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tighter"
+            className="text-3xl md:text-4xl font-black text-white mb-6 tracking-tighter"
           >
             PROFICIENCY <span className="text-blue-500 italic">MATRIX</span>
           </motion.h2>

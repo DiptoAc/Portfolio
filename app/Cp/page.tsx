@@ -7,6 +7,7 @@ import SkillTree from "./SkillTree";
 import RadarChart from "./RadarChart";
 import DifficultyMatrix from "./DifficultyMatrix";
 import TopicList from "./TopicList";
+import Achievements from "./Achivements";
 
 const platformLinks = [
   {
@@ -49,7 +50,7 @@ const platformLinks = [
 const icpcEvents = [
   {
     year: "2025",
-    title: "ICPC Asia West Continent Regional",
+    title: "ICPC Dhaka Regional by BUBT",
     rank: "14th Place (National)",
     image: "/icpc_2025.jpeg", // Ensure these are in your /public folder
   },
@@ -96,8 +97,9 @@ export default function CpPage() {
         </p>
         <CpStats />
 
-        <h2 className="text-5xl font-bold mb-10 text-center text-white border-b border-white/10 pb-4">
-          Online Judges
+        <h2 className="text-4xl md:text-5xl font-black mb-12 flex flex-col md:flex-row items-center justify-center gap-3 tracking-tighter uppercase italic">
+          <span className="text-white">Online</span>
+          <span className="text-blue-500 italic">Judges</span>
         </h2>
 
         {/* Platform Grid */}
@@ -126,8 +128,18 @@ export default function CpPage() {
         {/* ICPC Section */}
         
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <span className="text-yellow-500">🏆</span> ICPC Regionals
+          <h2 className="text-4xl md:text-5xl font-black mb-12 flex flex-col md:flex-row items-center justify-center gap-3 tracking-tighter uppercase italic">
+            <div className="flex items-center gap-4">
+              <span className="text-white">ICPC</span>
+              <span className="text-blue-500 italic">REGIONALS</span>
+            </div>
+            <motion.span 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-4xl md:text-5xl drop-shadow-[0_0_15px_rgba(234,179,8,0.4)]"
+            >
+              🏆
+            </motion.span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {icpcEvents.map((event, idx) => (
@@ -161,15 +173,26 @@ export default function CpPage() {
         
 
         
-
+        <Achievements />
         <DifficultyMatrix />
         <RadarChart />
         <TopicList />
         {/*<SkillTree />*/} 
 
         {/* Footer Note */}
-        <div className="text-center py-10 border-t border-white/5">
-          <p className="text-xl text-slate-100 italic">Total Problems Solved: 2000+</p>
+        <div className="mt-20 flex flex-col items-center gap-6 py-12 border-t border-white/10">
+          {/* The Centered Back Button */}
+          <Link 
+            href="/" 
+            className="group flex items-center gap-3 px-8 py-3 bg-slate-900/50 hover:bg-slate-800 border border-slate-700 hover:border-indigo-500 rounded-full text-slate-300 hover:text-white transition-all duration-300 shadow-lg hover:shadow-indigo-500/10"
+          >
+            <span className="inline-block transform group-hover:-translate-x-1 transition-transform font-bold">
+              ←
+            </span>
+            <span className="text-sm font-black uppercase tracking-widest">
+              Back to Portfolio
+            </span>
+          </Link>
         </div>
       </div>
     </main>

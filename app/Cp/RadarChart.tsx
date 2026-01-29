@@ -26,7 +26,10 @@ export default function RadarChart() {
 
   return (
     <section className="py-20 flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-10 text-white">Competitive Profile</h2>
+      <h2 className="text-4xl md:text-4xl font-black mb-12 flex flex-col md:flex-row items-center justify-center gap-3 tracking-tighter uppercase italic">
+        <span className="text-white">Competitive</span>
+        <span className="text-blue-500 italic">Profile</span>
+      </h2>
       
       <div className="relative w-full max-w-[500px] aspect-square">
         <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
