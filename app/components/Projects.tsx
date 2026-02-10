@@ -3,100 +3,23 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
-interface Project {
-  title: string;
-  description: string;
-  fullDescription?: string;
-  tech: string[];
-  github: string | null;
-  live: string | null;
-  highlights?: string[];
-  customRoute?: string;
-}
+import {projects, Project} from "@/data/projects"
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const router = useRouter();
 
-  const projects: Project[] = [
-    {
-      title: "EcoNest – Employee Management Service",
-      description: "Developed an RBAC office management system with 6 different roles. Cross-platform access on phones, tablets, and computers for modern hybrid workplace.",
-      fullDescription: "A comprehensive employee management system with Role-Based Access Control (RBAC) featuring 6 distinct user roles. The system provides seamless cross-platform access across phones, tablets, and computers, making it ideal for modern hybrid workplaces. Features include hybrid manual/AI operations and dynamic, shareable table architecture with secure user permissions.",
-      tech: ["React Native", "PostgreSQL", "Supabase", "Expo", "JavaScript"],
-      github: "https://github.com/Brikkhobondhon/EcoNest",
-      live: null,
-      highlights: [
-        "6 different role-based access levels",
-        "Cross-platform compatibility (mobile, tablet, desktop)",
-        "Hybrid manual/AI operations",
-        "Secure user permission system",
-        "Real-time data synchronization"
-      ]
-    },
-    {
-      title: "AttManager App: Attendance Management System",
-      description: "Implemented robust core application logic and attendance management using Kotlin. Designed responsive, native UI/UX layouts for Android devices.",
-      fullDescription: "A native Android application built with Kotlin that streamlines attendance management. Features robust core application logic, responsive UI/UX design using XML, and local data persistence for offline functionality and stability.",
-      tech: ["Kotlin", "Android Studio", "XML"],
-      github: "https://github.com/DiptoAc/Android_App_Kt",
-      live: null,
-      highlights: [
-        "Native Android development with Kotlin",
-        "Responsive UI/UX with XML layouts",
-        "Local data persistence",
-        "Offline functionality",
-        "Material Design implementation"
-      ]
-    },
-    {
-      title: "Professional Employee Directory",
-      description: "Complete management system featuring CRUD operations and robust data persistence using local SQLite. Professional UI/UX with form validation and confirmation dialogs.",
-      fullDescription: "A cross-platform mobile application built with React Native and Expo, featuring complete CRUD operations and robust local data persistence using SQLite. The app includes professional UI/UX design, comprehensive form validation, and confirmation dialogs to ensure data safety and integrity.",
-      tech: ["React Native", "TypeScript", "Expo", "SQLite"],
-      github: "https://github.com/DiptoAc/Mock_App",
-      live: null,
-      highlights: [
-        "Full CRUD operations",
-        "SQLite local database",
-        "Form validation",
-        "Confirmation dialogs for data safety",
-        "Cross-platform (iOS & Android)"
-      ]
-    },
-    {
-      title: "Traffic Violation Detection System",
-      description: "Automated traffic violation detection using Arduino UNO, ESP32-CAM, and ultrasonic sensors. Real-time image capture to Telegram bot with 95%+ accuracy.",
-      fullDescription: "An IoT-based smart monitoring system for automated traffic violation detection. Uses Arduino UNO, ESP32-CAM, and ultrasonic sensors (HC-SR04) to detect violations in real-time. Features intelligent traffic light control with automated interval management, Wi-Fi connectivity for cloud communication, and instant image transmission to Telegram bot with 95%+ reliability.",
-      tech: ["Arduino", "ESP32-CAM", "C++", "IoT", "Telegram API"],
-      github: "https://github.com/rayhanulamint2/Traffic-Violation-Detection-System",
-      live: null,
-      customRoute: "/Microprocessor", 
-      highlights: [
-        "95%+ detection accuracy",
-        "Real-time image capture",
-        "Automated traffic light control",
-        "Wi-Fi cloud communication",
-        "Instant Telegram notifications"
-      ]
-    },
-    {
-      title: "Professional Engineer Portfolio",
-      description: "A high-performance personal brand platform featuring glassmorphism design, interactive 3D-style carousels, and automated WhatsApp/Email integration for lead generation.",
-      fullDescription: "A premium, dark-themed portfolio developed for an Executive Support Engineer. The project focuses on high-end UI/UX using Framer Motion for smooth transitions, a custom-built 3D-style rotating photo gallery, and direct lead generation tools via WhatsApp and Gmail API integration. It's fully responsive and optimized for rapid loading on Vercel.",
-      tech: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-      github: "https://github.com/DiptoAc/Rahul-s-Portfolio",
-      live: "https://rahulchandradey.vercel.app/",
-      highlights: [
-        "Interactive 3D-style Photo Carousel",
-        "Automated Lead Generation via WhatsApp/Email",
-        "Sophisticated Glassmorphism UI",
-        "Dynamic Certificate & Experience Timeline",
-        "SEO Optimized & Fully Responsive Design"
-      ]
-    },
-  ];
+
+
+  const colorMap: Record<string, { hoverText: string; glow: string }> = {
+    "border-t-emerald-500": { hoverText: "group-hover:text-emerald-400", glow: "from-emerald-500" },
+    "border-t-sky-500": { hoverText: "group-hover:text-sky-400", glow: "from-sky-500" },
+    "border-t-indigo-500": { hoverText: "group-hover:text-indigo-400", glow: "from-indigo-500" },
+    "border-t-orange-500": { hoverText: "group-hover:text-orange-400", glow: "from-orange-500" },
+    "border-t-fuchsia-500": { hoverText: "group-hover:text-fuchsia-400", glow: "from-fuchsia-500" },
+  }
+
+
 
   const handleProjectClick = (project: Project) => {
     if (project.customRoute) {
@@ -124,7 +47,13 @@ export default function Projects() {
           </motion.h2>
           
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project, index) => {
+            // 1. Logic must be inside curly braces
+            const colors = colorMap[project.color || ""] || { 
+              hoverText: "group-hover:text-sky-400", 
+              glow: "from-sky-500" 
+            };
+            return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
@@ -132,14 +61,13 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                // FIXED: Changed from setSelectedProject to handleProjectClick
                 onClick={() => handleProjectClick(project)} 
-                className="bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-lg shadow-lg p-6 hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden group border border-slate-600/30"
+                className={`bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-lg shadow-lg p-6 hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden group border border-slate-600/30 border-t-4 ${project.color || 'border-t-sky-500'}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className={`absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none ${colors.glow} to-transparent`} />
                 
                 <div className="relative z-10">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-slate-100 mb-3 group-hover:text-sky-400 transition-colors">
+                  <h3 className={`text-xl sm:text-2xl font-semibold text-slate-100 mb-3 transition-colors ${colors.hoverText}`}>
                     {project.title}
                   </h3>
                   
@@ -156,7 +84,7 @@ export default function Projects() {
                   <div className="flex gap-4 items-center">
                     {project.github && (
                       <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-sky-400 hover:text-sky-300 font-medium flex items-center gap-1">
-                         Code
+                        Code
                       </a>
                     )}
                     {project.live && (
@@ -164,13 +92,14 @@ export default function Projects() {
                         Live Demo →
                       </a>
                     )}
-                    <span className="text-slate-400 text-sm ml-auto font-medium group-hover:text-white transition-colors">
+                    <span className={`text-sm ml-auto font-medium transition-colors text-slate-400 ${colors.hoverText}`}>
                       {project.customRoute ? "View Microprocessor Page →" : "Click for details"}
                     </span>
                   </div>
                 </div>
               </motion.div>
-            ))}
+            );
+          })}
           </div>
         </div>
       </section>

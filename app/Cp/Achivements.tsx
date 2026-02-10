@@ -11,7 +11,8 @@ interface Achievement {
 }
 
 const achievements: Achievement[] = [
-  { rank: "14th", year: "2025", event: "ICPC Asia Dhaka Regional Contest", link: "https://icpc.global/regionals/finder/Dhaka-2026/standings", highlight: true },
+  { rank: "TBA", year: "2026", event: "ICPC Asia West Continent Final", highlight: true },
+  { rank: "13th", year: "2025", event: "ICPC Asia Dhaka Regional Contest", link: "https://icpc.global/regionals/finder/Dhaka-2026/standings", highlight: true },
   { rank: "20th", year: "2025", event: "ICPC Preliminary Dhaka Site", link: "https://icpc.bubt.edu.bd/standing.php", highlight: true },
   { rank: "18th", year: "2025", event: "Metropoliton University IUPC", link: "https://toph.co/c/inter-university-mu-cse-fest-2025/standings" },
   { rank: "37th", year: "2024", event: "ICPC Preliminary Dhaka Site", link: "https://bapsoj.org/contests/icpc-preliminary-dhaka-site-2024/standings" },

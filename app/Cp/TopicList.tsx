@@ -20,9 +20,37 @@ const cpTopics: Topic[] = [
     color: "from-blue-500 to-indigo-500",
   },
   {
-    category: "Graph & Tree Theory",
-    skills: ["LCA (Binary Lifting)", "SCC (Kosaraju)", "Dijkstra/Bellman-Ford", "Centroid Decomposition", "Max Flow"],
+    category: "Graph & Tree Foundation",
+    skills: [
+      "BFS / DFS (Basics)",
+      "Multi-Source BFS",
+      "Floyd-Warshall",
+      "Kruskal’s & MST",
+      "Topological Sort (DAG DP)"
+    ],
     color: "from-purple-500 to-pink-500",
+  },
+  {
+    category: "Graph & Tree Theory",
+    skills: [
+        "LCA (Binary Lifting)",
+        "SCC (Kosaraju)", 
+        "Dijkstra/Bellman-Ford", 
+        "Centroid Decomposition", 
+        "Max Flow"
+    ],
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    category: "Advanced Graph Structures",
+    skills: [
+      "Binary Lifting (Successor Graphs)",
+      "Condensation Graphs",
+      "Eulerian Path (Hierholzer’s)",
+      "2-SAT (Logic via SCC)",
+      "Bipartite Check"
+    ],
+    color: "from-fuchsia-500 to-purple-600",
   },
   {
     category: "Mathematics",
@@ -71,28 +99,6 @@ const cpTopics: Topic[] = [
       "Trie Data Structure"
     ],
     color: "from-lime-500 to-green-500",
-  },
-  {
-    category: "Graph & Tree Theory",
-    skills: [
-      "BFS / DFS (Basics)",
-      "Multi-Source BFS",
-      "Floyd-Warshall",
-      "Kruskal’s & MST",
-      "Topological Sort (DAG DP)"
-    ],
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    category: "Advanced Graph Structures",
-    skills: [
-      "Binary Lifting (Successor Graphs)",
-      "Condensation Graphs",
-      "Eulerian Path (Hierholzer’s)",
-      "2-SAT (Logic via SCC)",
-      "Bipartite Check"
-    ],
-    color: "from-fuchsia-500 to-purple-600",
   },
   {
     category: "Network Flow & Matching",

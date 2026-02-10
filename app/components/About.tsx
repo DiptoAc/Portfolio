@@ -113,7 +113,7 @@ export default function About() {
                     className="text-lg text-slate-300 leading-relaxed"
                   >
                     </motion.p>
-                    As an <span className="text-pink-400 font-semibold">ICPC Regionalist 2025 (Rank 14)</span>, I've tackled <span className="text-pink-300 font-semibold">1500+ problems</span>. Currently based in <span className="text-pink-400 font-semibold">Sylhet, Bangladesh</span>, I enjoy collaborating on high-impact projects and leading technical communities.
+                    As an <span className="text-pink-400 font-semibold">ICPC Regionalist 2025 (Rank 13)</span>, I've tackled <span className="text-pink-300 font-semibold">1500+ problems</span>. Currently based in <span className="text-pink-400 font-semibold">Sylhet, Bangladesh</span>, I enjoy collaborating on high-impact projects and leading technical communities.
                   <motion.p 
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
