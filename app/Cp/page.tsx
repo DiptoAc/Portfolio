@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import CpStats from "./CpStats";
-import SkillTree from "./SkillTree";
-import RadarChart from "./RadarChart";
-import DifficultyMatrix from "./DifficultyMatrix";
-import TopicList from "./TopicList";
-import Achievements from "./Achivements";
+import CpStats from "../../components/sections/Cp/CpStats";
+import SkillTree from "../../components/sections/Cp/SkillTree";
+import RadarChart from "../../components/sections/Cp/RadarChart";
+import DifficultyMatrix from "../../components/sections/Cp/DifficultyMatrix";
+import TopicList from "../../components/sections/Cp/TopicList";
+import Achievements from "../../components/sections/Cp/Achivements";
 
 const platformLinks = [
   {

@@ -1,6 +1,7 @@
 export interface Project {
   title: string;
   color?: string; 
+  image?: string;
   description: string;
   fullDescription?: string;
   tech: string[];
@@ -13,6 +14,7 @@ export interface Project {
 export const projects: Project[] = [
   {
       title: "EcoNest – Employee Management Service",
+      image: "/Images/Econest.png",
       color: "border-t-emerald-500", // Emerald/Green for EcoNest
       description: "Developed an RBAC office management system with 6 different roles. Cross-platform access on phones, tablets, and computers for modern hybrid workplace.",
       fullDescription: "A comprehensive employee management system with Role-Based Access Control (RBAC) featuring 6 distinct user roles. The system provides seamless cross-platform access across phones, tablets, and computers, making it ideal for modern hybrid workplaces. Features include hybrid manual/AI operations and dynamic, shareable table architecture with secure user permissions.",
@@ -29,6 +31,7 @@ export const projects: Project[] = [
     },
     {
       title: "AttManager App: Attendance Management System",
+      image: "/Images/AttManager.png",
       color: "border-t-sky-500", // Sky Blue for a professional tool
       description: "Implemented robust core application logic and attendance management using Kotlin. Designed responsive, native UI/UX layouts for Android devices.",
       fullDescription: "A native Android application built with Kotlin that streamlines attendance management. Features robust core application logic, responsive UI/UX design using XML, and local data persistence for offline functionality and stability.",
@@ -45,6 +48,7 @@ export const projects: Project[] = [
     },
     {
       title: "Professional Employee Directory",
+      image: "/Images/EmpDir.png",
       color: "border-t-indigo-500",
       description: "Complete management system featuring CRUD operations and robust data persistence using local SQLite. Professional UI/UX with form validation and confirmation dialogs.",
       fullDescription: "A cross-platform mobile application built with React Native and Expo, featuring complete CRUD operations and robust local data persistence using SQLite. The app includes professional UI/UX design, comprehensive form validation, and confirmation dialogs to ensure data safety and integrity.",
@@ -61,12 +65,13 @@ export const projects: Project[] = [
     },
     {
       title: "Traffic Violation Detection System",
+      image: "/Images/IoT.png",
       color: "border-t-orange-500",
       description: "Automated traffic violation detection using Arduino UNO, ESP32-CAM, and ultrasonic sensors. Real-time image capture to Telegram bot with 95%+ accuracy.",
       fullDescription: "An IoT-based smart monitoring system for automated traffic violation detection. Uses Arduino UNO, ESP32-CAM, and ultrasonic sensors (HC-SR04) to detect violations in real-time. Features intelligent traffic light control with automated interval management, Wi-Fi connectivity for cloud communication, and instant image transmission to Telegram bot with 95%+ reliability.",
       tech: ["Arduino", "ESP32-CAM", "C++", "IoT", "Telegram API"],
       github: "https://github.com/rayhanulamint2/Traffic-Violation-Detection-System",
-      live: null,
+      live: "/Microprocessor",
       customRoute: "/Microprocessor", 
       highlights: [
         "95%+ detection accuracy",
@@ -78,6 +83,7 @@ export const projects: Project[] = [
     },
     {
       title: "Professional Engineer Portfolio",
+      image: "/Images/Portfolio.png",
       color: "border-t-fuchsia-500",
       description: "A high-performance personal brand platform featuring glassmorphism design, interactive 3D-style carousels, and automated WhatsApp/Email integration for lead generation.",
       fullDescription: "A premium, dark-themed portfolio developed for an Executive Support Engineer. The project focuses on high-end UI/UX using Framer Motion for smooth transitions, a custom-built 3D-style rotating photo gallery, and direct lead generation tools via WhatsApp and Gmail API integration. It's fully responsive and optimized for rapid loading on Vercel.",
