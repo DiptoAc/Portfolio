@@ -20,7 +20,7 @@ export default function Experience() {
     {
       title: "Competitive Programmer",
       organization: "ICPC Regional - 14th Place",
-      period: "2024 - 2025",
+      period: "2023 - 2026",
       description: [
         "Achieved a rank of 14th in the whole of Bangladesh during the ICPC Regional contest",
         "Solved complex algorithmic problems involving advanced data structures and dynamic programming",
