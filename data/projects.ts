@@ -14,7 +14,7 @@ export interface Project {
 export const projects: Project[] = [
   {
       title: "EcoNest – Employee Management Service",
-      image: "/Images/Econest.png",
+      image: "/Images/EcoNest.png",
       color: "border-t-emerald-500", // Emerald/Green for EcoNest
       description: "Developed an RBAC office management system with 6 different roles. Cross-platform access on phones, tablets, and computers for modern hybrid workplace.",
       fullDescription: "A comprehensive employee management system with Role-Based Access Control (RBAC) featuring 6 distinct user roles. The system provides seamless cross-platform access across phones, tablets, and computers, making it ideal for modern hybrid workplaces. Features include hybrid manual/AI operations and dynamic, shareable table architecture with secure user permissions.",

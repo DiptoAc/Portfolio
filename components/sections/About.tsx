@@ -142,7 +142,7 @@ export default function About() {
                 >
                   <span className="px-3 py-1 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full text-sm font-medium">Problem Solver</span>
                   <span className="px-3 py-1 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium">ICPC Regionalist</span>
-                  <span className="px-3 py-1 bg-pink-500/10 text-pink-300 border border-pink-500/20 rounded-full text-sm font-medium">SUST ACM Lab</span>
+                  <span className="px-3 py-1 bg-pink-500/10 text-pink-300 border border-pink-500/20 rounded-full text-sm font-medium">SUST(cse)</span>
                   <span className="px-3 py-1 bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 rounded-full text-sm font-medium">Competitive Programmer</span>
                 </motion.div>
             

@@ -83,13 +83,14 @@ export default function Header() {
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-blue-500/10 rounded-lg border border-blue-500/20"
+                    // CHANGE COLORS HERE:
+                    className="absolute inset-0 bg-gradient-to-r from-fuchsia-600/20 to-purple-600/20 rounded-lg border border-fuchsia-500/40"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   >
-                    {/* Subtle glow dot at the bottom */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
+                    {/* CHANGE the Glow Dot color */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-fuchsia-400 shadow-[0_0_12px_rgba(192,38,211,0.8)]" />
                   </motion.div>
                 )}
               </a>

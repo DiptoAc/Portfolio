@@ -16,7 +16,7 @@ export default function Certifications() {
       name: "ICPC Regional Participation Certificate",
       issuer: "ICPC Foundation",
       date: "2025",
-      link: "/Certificates/icpc_2025.pdf", 
+      link: "/Certificates/ICPC_certificate.pdf", 
       badge: "/badges/icpc_badge.jpg",
     },
     {
