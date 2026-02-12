@@ -9,11 +9,19 @@ import { HeroCTA } from "./Hero/HeroCTA";
 import { SocialLinks } from "./Hero/SocialLinks";
 import { ScrollIndicator } from "./Hero/ScrollIndicator";
 import Typewriter from 'typewriter-effect';
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true); // Set to true once mounted in browser
+  }, []);
+
+  
   const { mousePosition, particles } = useHeroAnimation();
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0.45]);
+
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden bg-gradient-to-br from-slate-950 to-slate-900">

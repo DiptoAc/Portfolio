@@ -1,11 +1,19 @@
-import { useState, useEffect, startTransition } from "react";
+import { useState, useEffect } from "react";
 
 export function useHeroAnimation() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<any[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Particle Generation
+  // 1. Set mounted state to true once the component reaches the browser
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // 2. Only generate particles if we are on the client (mounted)
+  useEffect(() => {
+    if (!isMounted) return;
+
     const newParticles = Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -14,11 +22,15 @@ export function useHeroAnimation() {
       duration: Math.random() * 25 + 20,
       delay: Math.random() * 10,
     }));
-    startTransition(() => setParticles(newParticles));
-  }, []);
+    
+    // Removed startTransition as it can be unstable during initial hydration
+    setParticles(newParticles);
+  }, [isMounted]);
 
   // Smooth Mouse Tracking
   useEffect(() => {
+    if (!isMounted) return; // Don't attach listeners until mounted
+
     let animationFrameId: number;
     let currentX = 0;
     let currentY = 0;
@@ -28,6 +40,7 @@ export function useHeroAnimation() {
         currentX += (e.clientX - currentX) * 0.15;
         currentY += (e.clientY - currentY) * 0.15;
         setMousePosition({ x: currentX, y: currentY });
+        
         if (Math.abs(e.clientX - currentX) > 1) {
           animationFrameId = requestAnimationFrame(animate);
         }
@@ -41,12 +54,10 @@ export function useHeroAnimation() {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isMounted]);
 
   return { mousePosition, particles };
 }
-
-
 
 
 
