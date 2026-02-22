@@ -12,16 +12,16 @@ import Typewriter from 'typewriter-effect';
 import { useState, useEffect } from "react";
 
 export default function Hero() {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true); // Set to true once mounted in browser
-  }, []);
-
   
+  const [isMounted, setIsMounted] = useState(false);
   const { mousePosition, particles } = useHeroAnimation();
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0.45]);
-
+  
+  useEffect(() => {
+    setIsMounted(true); // Set to true once mounted in browser
+  }, []);
+  if (!isMounted) return <section className="min-h-screen bg-slate-950" />;
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden bg-gradient-to-br from-slate-950 to-slate-900">
@@ -45,7 +45,7 @@ export default function Hero() {
             whileHover={{ filter: "hue-rotate(90deg)", scale: 1.02 }}
             transition={{ duration: 0.8 }}
             className="bg-gradient-to-r from-blue-600 via-sky-500 to-fuchsia-500 bg-clip-text text-transparent cursor-default"
-            //className="bg-gradient-to-r from-sky-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent cursor-default"
+            // className="bg-gradient-to-r from-sky-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent cursor-default"
             //className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent cursor-default"
             //className="bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent cursor-default"
             //className="bg-gradient-to-r from-emerald-400 via-teal-500 to-sky-500 bg-clip-text text-transparent cursor-default"

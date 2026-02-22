@@ -14,8 +14,8 @@ export const HeroBackground = ({ mousePosition, particles }: HeroBackgroundProps
       <div
         className="pointer-events-none fixed inset-0 opacity-0 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(circle 400px at ${mousePosition.x}px ${mousePosition.y}px, 
-            rgba(59, 130, 246, 0.30) 0%, 
+          background: `radial-gradient(circle 250px at ${mousePosition.x}px ${mousePosition.y}px,
+            rgba(59, 130, 246, 0.30) 5%, 
             rgba(139, 92, 246, 0.2) 30%, 
             transparent 70%)`,
           opacity: mousePosition.x > 0 && mousePosition.y > 0 ? 1 : 0,
